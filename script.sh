@@ -42,8 +42,10 @@ fi
 # automatically unmount camera filesystem?
 
 # Change the light from grow light to photo lights using a GEMBIRD programmable power strip
-sispmctl -o 1,2
-sispmctl -f 3,4
+#sispmctl -o 1,2
+#sispmctl -f 3,4
+
+
 
 # Take photo
 cd $outdir
@@ -58,5 +60,5 @@ gphoto2 --set-config whitebalance=4     \
 
 
 # Change the light back to grow lights.
-sispmctl -f 1,2
-sispmctl -o 3,4
+#sispmctl -f 1,2
+#sispmctl -o 3,4
