@@ -10,6 +10,23 @@ focusreturn=$(( -1 * focusstepsize * focusstepcount ))
 
 ### do checkups
 
+### configure photo settings
+# use gphoto2 --list-config to learn about all specific options available
+# use gphoto2 --get-config to learn more about the syntax and possibilities of a specific option
+# these may differ per camera & lens model
+# imagequality 2:FineJPEG  4: RAW+basicJPEG 6:RAW+FineJPEG
+
+take_picture () {
+gphoto2 --set-config whitebalance=4     \
+        --set-config f-number=4         \
+        --set-config shutterspeed=1/10  \
+        --set-config iso=4              \
+        --set-config imagequality=2     \
+        --capture-image-and-download            \
+        --filename=$prefix-d$d.\%C
+}
+
+
 # is sispmctl present?
 if     ! $(which sispmctl)
 then   echo '\e[31mERROR: install sispmctl to control the lights\e[0m'
@@ -63,25 +80,6 @@ fi
 # Change the light from grow light to photo lights using a GEMBIRD programmable power strip
 #sispmctl -o 1,2
 #sispmctl -f 3,4
-
-
-### configure photo settings
-
-# use gphoto2 --list-config to lear about all specific options available
-# use gphoto2 --get-config to learn more about the syntax and possibilities of a specific option
-# these may differ per camera model
-
-# imagequality 2:FineJPEG  4: RAW+basicJPEG 6:RAW+FineJPEG
-
-take_picture () {
-gphoto2 --set-config whitebalance=4     \
-        --set-config f-number=4         \
-        --set-config shutterspeed=1/10  \
-        --set-config iso=0              \
-        --set-config imagequality=2     \
-        --capture-image-and-download            \
-        --filename=$prefix-d$d.\%C
-}
 
 
 ### take the photos!
