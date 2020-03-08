@@ -89,7 +89,7 @@ done
 
 
 rm ./capture_preview.jpg
-gphoto2 --capture-preview --set-config /main/actions/manualfocusdrive=-15000
+gphoto2 --capture-preview --set-config /main/actions/manualfocusdrive="$focusreturn"
 
 ### finish up
 
