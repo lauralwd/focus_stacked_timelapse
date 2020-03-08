@@ -85,7 +85,14 @@ gphoto2 --set-config whitebalance=4     \
 
 
 ### take the photos!
-cd $outdir
+if    [ $focusstepcount -gt 0 ]
+then  echo "\e[34mINFO: Making a focus stack! storing images in $outdir/$prefix \e[0m"
+      mkdir "$outdir/$prefix"
+      cd    "$outdir/$prefix"
+elif  [ $focusstepcount -eq 0 ]
+then  cd "$outdir"
+fi
+
 d=0
 take_picture
 
