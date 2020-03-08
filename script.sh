@@ -58,9 +58,6 @@ fi
 
 # imagequality 2:FineJPEG  4: RAW+basicJPEG 6:RAW+FineJPEG
 
-
-
-#gphoto2 --capture-preview
 take_picture () {
 gphoto2 --set-config whitebalance=4     \
         --set-config f-number=4         \
