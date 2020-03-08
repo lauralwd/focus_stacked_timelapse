@@ -24,6 +24,20 @@ then   echo '\e[31minstall gphoto2 to contol the camera\e[0m'
 else   echo '\e[32mOK: gphoto2 found \e[0m'
 fi
 
+#if hugin-tools present
+if     [ ! $(which align_image_stack) ]
+then   echo '\e[31minstall hugin-tools to automatically align the images for subsequent focusstacking \e[0m'
+       exit 1
+else   echo '\e[32mOK: hugin-tools found \e[0m'
+fi
+
+#if hugin-tools present
+if     [ ! $(which enfuse) ]
+then   echo '\e[31minstall enfuse to automatically stack the aligned images\e[0m'
+       exit 1
+else   echo '\e[32mOK: enfuse found \e[0m'
+fi
+
 #if camera reachable
 camera=$(gphoto2 --auto-detect | tail -n +3 | sed 's/usb:.*$//' )
 cameras=$(gphoto2 --auto-detect | tail -n +3 | wc -l )
