@@ -19,7 +19,18 @@ then   echo '\e[31minstall gphoto2 to contol the camera\e[0m'
 else   echo '\e[32mOK: gphoto2 found \e[0m'
 fi
 
+#if camera reachable
+camera=$(gphoto2 --auto-detect | tail -n +3 | sed 's/usb:.*$//' )
+cameras=$(gphoto2 --auto-detect | tail -n +3 | wc -l )
+if     [ $cameras -eq 1  ]
+then   echo "\e[32mOK: found 1 camera:\e[0m \n$camera \e[0m"
+elif   [ $cameras -gt 1 ]
+then   echo "\e[31mERROR found more than one camera?! I'm not sure how to deal with this:\e[0m\n\n$camera"
+elif   [ $cameras -eq 0 ]
+then   echo "\e[31mERROR: no camera found. Make sure it's turned on and confirm it can be found by gphoto2 by running 'gphoto2 --auto-detect'\e[0m"
+       exit 1
 fi
+
 
 ### prepare
 if    [ ! -d "$outdir" ]
