@@ -2,6 +2,7 @@
 
 #output directory
 outdir='/home/laura/timelapse'
+prefix=$(date '+%Y%m%d-%H%M'  )
 
 focusstepsize=500
 focusstepcount=10
