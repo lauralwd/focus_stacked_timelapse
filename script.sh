@@ -112,6 +112,21 @@ gphoto2 --capture-preview --set-config /main/actions/manualfocusdrive="$focusret
 rm ./capture_preview.jpg
 
 ### finish up
+if    [ $focusstepcount -gt 0 ]
+then  echo "\e[34mINFO: Aligning images for stacking \e[0m"
+      cd "$outdir"
+      align_image_stack -m -a "$prefix"/*.jpg -a "$prefix"/"$prefix"_aligned --gpu
+      echo "\e[34mINFO: Stacking images \e[0m"
+      enfuse --exposure-weight=0      \
+             --saturation-weight=0    \
+             --contrast-weight=1      \
+             --hard-mask              \
+             --compression=jpeg       \
+             --output="$prefix"_stacked.jpg \
+             "$prefix"/"$prefix"_aligned*.tif
+      rm -f "$prefix"/"$prefix"_aligned*.tif"
+      echo "\e[34mINFO: Stacked image available at "$prefix_stacked.jpg" \e[0m"
+fi
 
 # Change the light back to grow lights.
 #sispmctl -f 1,2
