@@ -118,16 +118,16 @@ then  echo "\e[34mINFO: Aligning images for stacking \e[0m"
       # this helps keeping the focus plane of the first picture
       cp "$prefix"/"$prefix"-d0.jpg "$prefix"/"$prefix"-d00.jpg
       # align images to each other
-      align_image_stack -m -a "$prefix"/*.jpg -a "$prefix"/"$prefix"_aligned --gpu
+      nice align_image_stack -m -a "$prefix"/*.jpg -a "$prefix"/"$prefix"_aligned --gpu
       # the actual focus stacking
       echo "\e[34mINFO: Stacking images \e[0m"
-      enfuse --exposure-weight=0      \
-             --saturation-weight=0    \
-             --contrast-weight=1      \
-             --hard-mask              \
-             --compression=jpeg       \
-             --output="$prefix"_stacked.jpg \
-             "$prefix"/"$prefix"_aligned*.tif
+      nice enfuse --exposure-weight=0      \
+                  --saturation-weight=0    \
+                  --contrast-weight=1      \
+                  --hard-mask              \
+                  --compression=jpeg       \
+                  --output="$prefix"_stacked.jpg \
+                  "$prefix"/"$prefix"_aligned*.tif
       # clean-up
       rm -f "$prefix"/"$prefix"_aligned*.tif
       rm -f "$prefix"/"$prefix"-d00.jpg
