@@ -5,7 +5,6 @@ outdir='/home/laura/timelapse'
 
 ### do checkups
 
-if gphoto2 present
 # is sispmctl present?
 if     ! $(which sispmctl)
 then   echo '\e[31mERROR: install sispmctl to control the lights\e[0m'
@@ -13,7 +12,12 @@ then   echo '\e[31mERROR: install sispmctl to control the lights\e[0m'
 else   echo '\e[32sispmctl found \e[0m'
 fi
 
-if camera reachable
+#if gphoto2 present
+if     [ ! $(which gphoto2) ]
+then   echo '\e[31minstall gphoto2 to contol the camera\e[0m'
+       exit 1
+else   echo '\e[32mOK: gphoto2 found \e[0m'
+fi
 
 if ! -d "$outdir"
 then exit 1
