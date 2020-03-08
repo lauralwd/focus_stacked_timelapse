@@ -118,6 +118,9 @@ then  echo "\e[34mINFO: Aligning images for stacking \e[0m"
       # this helps keeping the focus plane of the first picture
       cp "$prefix"/"$prefix"-d0.jpg "$prefix"/"$prefix"-d00.jpg
       # align images to each other
+
+      # note to self: store these in a fast temp directory to prevent unnessecary writes to a slow external harddisk
+
       nice align_image_stack -m -a "$prefix"/*.jpg -a "$prefix"/"$prefix"_aligned --gpu
       # the actual focus stacking
       echo "\e[34mINFO: Stacking images \e[0m"
