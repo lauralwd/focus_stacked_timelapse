@@ -48,6 +48,12 @@ fi
 
 ### make the photo
 
+# use gphoto2 --list-config to lear about all specific options available
+# use gphoto2 --get-config to learn more about the syntax and possibilities of a specific option 
+# these may differ per camera model
+
+# imagequality 2:FineJPEG  4: RAW+basicJPEG 6:RAW+FineJPEG
+
 cd $outdir
 gphoto2 --set-config whitebalance=4     \
         --set-config f-number=4         \
