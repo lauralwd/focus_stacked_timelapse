@@ -96,16 +96,17 @@ fi
 d=0
 take_picture
 
-for i in $(seq 1 1 $focusstepcount)
-do  if   [ -f ./capture_preview.jpg ]
-    then rm ./capture_preview.jpg
-    fi
-    gphoto2 --capture-preview --set-config /main/actions/manualfocusdrive="$focusstepsize"
-    d=$i
-    take_picture
-    rm ./capture_preview.jpg
-done
-
+if   [ $focusstepcount -gt 0 ]
+then for i in $(seq 1 1 $focusstepcount)
+     do  if   [ -f ./capture_preview.jpg ]
+         then rm ./capture_preview.jpg
+         fi
+         gphoto2 --capture-preview --set-config /main/actions/manualfocusdrive="$focusstepsize"
+         d=$i
+         take_picture
+         rm ./capture_preview.jpg
+     done
+fi
 
 gphoto2 --capture-preview --set-config /main/actions/manualfocusdrive="$focusreturn"
 rm ./capture_preview.jpg
