@@ -3,6 +3,8 @@
 #output directory
 outdir='/home/laura/timelapse'
 
+focusstepsize=500
+focusstepcount=10
 ### do checkups
 
 # is sispmctl present?
@@ -64,10 +66,26 @@ gphoto2 --set-config whitebalance=4     \
         --set-config iso=0              \
         --set-config imagequality=2     \
         --capture-image-and-download            \
-        --filename=\%Y\%m\%d-%H\%M\%S-\%03n.\%C
+        --filename=\%Y\%m\%d-%H\%M\%S-\%03n-d$d.\%C
 }
 
+
+d=0
 take_picture
+
+for i in $(seq 1 1 $focusstepcount)
+do  if   [ -f ./capture_preview.jpg ]
+    then rm ./capture_preview.jpg
+    fi
+    gphoto2 --capture-preview --set-config /main/actions/manualfocusdrive="$focusstepsize"
+    d=$i
+    take_picture
+    rm ./capture_preview.jpg
+done
+
+
+rm ./capture_preview.jpg
+gphoto2 --capture-preview --set-config /main/actions/manualfocusdrive=-15000
 
 ### finish up
 
