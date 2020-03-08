@@ -50,15 +50,15 @@ fi
 #sispmctl -f 3,4
 
 
-### make the photo
+### configure photo settings
 
 # use gphoto2 --list-config to lear about all specific options available
-# use gphoto2 --get-config to learn more about the syntax and possibilities of a specific option 
+# use gphoto2 --get-config to learn more about the syntax and possibilities of a specific option
 # these may differ per camera model
 
 # imagequality 2:FineJPEG  4: RAW+basicJPEG 6:RAW+FineJPEG
 
-cd $outdir
+
 
 #gphoto2 --capture-preview
 take_picture () {
@@ -72,6 +72,8 @@ gphoto2 --set-config whitebalance=4     \
 }
 
 
+### take the photos!
+cd $outdir
 d=0
 take_picture
 
