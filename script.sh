@@ -85,8 +85,8 @@ do  if   [ -f ./capture_preview.jpg ]
 done
 
 
-rm ./capture_preview.jpg
 gphoto2 --capture-preview --set-config /main/actions/manualfocusdrive="$focusreturn"
+rm ./capture_preview.jpg
 
 ### finish up
 
