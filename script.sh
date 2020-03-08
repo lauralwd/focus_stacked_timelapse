@@ -80,7 +80,7 @@ gphoto2 --set-config whitebalance=4     \
         --set-config iso=0              \
         --set-config imagequality=2     \
         --capture-image-and-download            \
-        --filename=\%Y\%m\%d-%H\%M\%S-\%03n-d$d.\%C
+        --filename=$prefix-d$d.\%C
 }
 
 
