@@ -125,8 +125,8 @@ then  echo "\e[34mINFO: Aligning images for stacking \e[0m"
              --compression=jpeg       \
              --output="$prefix"_stacked.jpg \
              "$prefix"/"$prefix"_aligned*.tif
-      rm -f "$prefix"/"$prefix"_aligned*.tif"
       echo "\e[34mINFO: Stacked image available at "$prefix_stacked.jpg" \e[0m"
+      rm -f "$prefix"/"$prefix"_aligned*.tif
       rm -f "$prefix"/"$prefix"-d00.jpg
 fi
 
