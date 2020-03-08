@@ -19,10 +19,14 @@ then   echo '\e[31minstall gphoto2 to contol the camera\e[0m'
 else   echo '\e[32mOK: gphoto2 found \e[0m'
 fi
 
-if ! -d "$outdir"
-then exit 1
 fi
 
+### prepare
+if    [ ! -d "$outdir" ]
+then  echo "\e[34mINFO: creating directory $outdir to store photo's \e[0m"
+      mkdir "$outdir"
+else  echo "\e[34mINFO: Found $outdir to store photo's \e[0m"
+fi
 # Change the light from grow light to photo lights using a GEMBIRD programmable power strip
 sispmctl -o 1,2
 sispmctl -f 3,4
