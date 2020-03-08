@@ -55,6 +55,9 @@ fi
 # imagequality 2:FineJPEG  4: RAW+basicJPEG 6:RAW+FineJPEG
 
 cd $outdir
+
+#gphoto2 --capture-preview
+take_picture () {
 gphoto2 --set-config whitebalance=4     \
         --set-config f-number=4         \
         --set-config shutterspeed=1/10  \
@@ -62,6 +65,9 @@ gphoto2 --set-config whitebalance=4     \
         --set-config imagequality=2     \
         --capture-image-and-download            \
         --filename=\%Y\%m\%d-%H\%M\%S-\%03n.\%C
+}
+
+take_picture
 
 ### finish up
 
