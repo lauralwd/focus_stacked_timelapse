@@ -1,5 +1,4 @@
 ### set variables
-
 #output directory
 outdir='/home/laura/timelapse'
 prefix=$(date '+%Y%m%d-%H%M'  )
@@ -31,7 +30,6 @@ gphoto2 --set-config whitebalance=4     \
 # is sispmctl present?
 if     ! $(which sispmctl)
 then   echo '\e[31mERROR: install sispmctl to control the lights\e[0m'
-      #exit 1
 else   echo '\e[32sispmctl found \e[0m'
 fi
 
@@ -77,7 +75,6 @@ else  echo "\e[34mINFO: Found $outdir to store photo's \e[0m"
 fi
 
 # automatically unmount camera filesystem?
-
 # Change the light from grow light to photo lights using a GEMBIRD programmable power strip
 #sispmctl -o 1,2
 #sispmctl -f 3,4
