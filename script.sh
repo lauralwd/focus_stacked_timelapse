@@ -56,7 +56,7 @@ gphoto2 --set-config whitebalance=4     \
         --set-config flashmodemanualpower=1/32  \
         --set-config imagequality=4             \
         --capture-image-and-download            \
-        --filename=\%Y\%m\%d-%H\%M\%S-\%-03n.\%C
+        --filename=\%Y\%m\%d-%H\%M\%S-\%03n.\%C
 
 ### finish up
 
