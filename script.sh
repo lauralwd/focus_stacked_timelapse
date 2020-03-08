@@ -50,11 +50,10 @@ fi
 
 cd $outdir
 gphoto2 --set-config whitebalance=4     \
-        --set-config f-number=8         \
-        --set-config shutterspeed=1/50  \
-        --set-config iso=1              \
-        --set-config flashmodemanualpower=1/32  \
-        --set-config imagequality=4             \
+        --set-config f-number=4         \
+        --set-config shutterspeed=1/10  \
+        --set-config iso=0              \
+        --set-config imagequality=2     \
         --capture-image-and-download            \
         --filename=\%Y\%m\%d-%H\%M\%S-\%03n.\%C
 
