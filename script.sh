@@ -38,6 +38,9 @@ then  echo "\e[34mINFO: creating directory $outdir to store photo's \e[0m"
       mkdir "$outdir"
 else  echo "\e[34mINFO: Found $outdir to store photo's \e[0m"
 fi
+
+# automatically unmount camera filesystem?
+
 # Change the light from grow light to photo lights using a GEMBIRD programmable power strip
 sispmctl -o 1,2
 sispmctl -f 3,4
