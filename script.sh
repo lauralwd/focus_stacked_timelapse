@@ -5,6 +5,8 @@ outdir='/home/laura/timelapse'
 
 focusstepsize=500
 focusstepcount=10
+focusreturn=$(( -1 * focusstepsize * focusstepcount ))
+
 ### do checkups
 
 # is sispmctl present?
