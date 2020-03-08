@@ -6,9 +6,9 @@ prefix=$(date '+%Y%m%d-%H%M'  )
 
 focusstepsize=500
 focusstepcount=10
+#stacking settings
 focusreturn=$(( -1 * focusstepsize * focusstepcount ))
 
-### do checkups
 
 ### configure photo settings
 # use gphoto2 --list-config to learn about all specific options available
@@ -27,6 +27,7 @@ gphoto2 --set-config whitebalance=4     \
 }
 
 
+### do checkups
 # is sispmctl present?
 if     ! $(which sispmctl)
 then   echo '\e[31mERROR: install sispmctl to control the lights\e[0m'
@@ -83,6 +84,7 @@ fi
 
 
 ### take the photos!
+# when stacking, use a special output directory
 if    [ $focusstepcount -gt 0 ]
 then  echo "\e[34mINFO: Making a focus stack! storing images in $outdir/$prefix \e[0m"
       mkdir "$outdir/$prefix"
@@ -91,9 +93,11 @@ elif  [ $focusstepcount -eq 0 ]
 then  cd "$outdir"
 fi
 
+# take the picture
 d=0
 take_picture
 
+# optional focus stacking in a loop
 if   [ $focusstepcount -gt 0 ]
 then for i in $(seq 1 1 $focusstepcount)
      do  if   [ -f ./capture_preview.jpg ]
@@ -106,6 +110,7 @@ then for i in $(seq 1 1 $focusstepcount)
      done
 fi
 
+# reset focus back to original distance
 gphoto2 --capture-preview --set-config /main/actions/manualfocusdrive="$focusreturn"
 rm ./capture_preview.jpg
 
@@ -113,8 +118,11 @@ rm ./capture_preview.jpg
 if    [ $focusstepcount -gt 0 ]
 then  echo "\e[34mINFO: Aligning images for stacking \e[0m"
       cd "$outdir"
+      # this helps keeping the focus plane of the first picture
       cp "$prefix"/"$prefix"-d0.jpg "$prefix"/"$prefix"-d00.jpg
+      # align images to each other
       align_image_stack -m -a "$prefix"/*.jpg -a "$prefix"/"$prefix"_aligned --gpu
+      # the actual focus stacking
       echo "\e[34mINFO: Stacking images \e[0m"
       enfuse --exposure-weight=0      \
              --saturation-weight=0    \
@@ -123,6 +131,7 @@ then  echo "\e[34mINFO: Aligning images for stacking \e[0m"
              --compression=jpeg       \
              --output="$prefix"_stacked.jpg \
              "$prefix"/"$prefix"_aligned*.tif
+      # clean-up
       rm -f "$prefix"/"$prefix"_aligned*.tif
       rm -f "$prefix"/"$prefix"-d00.jpg
       prefix_stacked=$(echo "$prefix"_stacked)
