@@ -46,8 +46,8 @@ fi
 #sispmctl -f 3,4
 
 
+### make the photo
 
-# Take photo
 cd $outdir
 gphoto2 --set-config whitebalance=4     \
         --set-config f-number=8         \
@@ -58,6 +58,7 @@ gphoto2 --set-config whitebalance=4     \
         --capture-image-and-download            \
         --filename=\%Y\%m\%d-%H\%M\%S-\%-03n.\%C
 
+### finish up
 
 # Change the light back to grow lights.
 #sispmctl -f 1,2
