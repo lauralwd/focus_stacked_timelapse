@@ -18,14 +18,22 @@ focusreturn=$(( -1 * focusstepsize * focusstepcount ))
 # aelaflmode 0:AE/AFlock 2:AFlock 4:AFon
 # autofocus 0:on 1:off
 
+# autofocus manipulations was tested successfully on D750
+# autofocus manipulations were not successfull on D90
+
 take_picture () {
-gphoto2 --set-config whitebalance=4     \
+gphoto2 --set-config autofocus=1
+gphoto2 --set-config autofocus=1        \
+        --set-config aelaflmode=0       \
+        --set-config whitebalance=4     \
         --set-config f-number=4         \
         --set-config shutterspeed=1/10  \
         --set-config iso=4              \
         --set-config imagequality=2     \
         --capture-image-and-download            \
         --filename=$prefix-d$d.\%C
+#gphoto2 --set-config autofocus=0
+#gphoto2 --set-config /main/capturesettings/focusmode2 0
 }
 
 
