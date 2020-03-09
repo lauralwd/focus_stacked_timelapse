@@ -5,7 +5,8 @@ prefix=$(date '+%Y%m%d-%H%M'  )
 
 #stacking settings
 focusstepsize=200
-focusstepcount=30
+focusstepsize=100
+focusstepcount=0
 focusreturn=$(( -1 * focusstepsize * focusstepcount ))
 
 
