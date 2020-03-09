@@ -156,5 +156,10 @@ then  echo "\e[34mINFO: Aligning images for stacking \e[0m"
 fi
 
 # Change the light back to grow lights.
-#sispmctl -f 1,2
-#sispmctl -o 3,4
+sispmctl -f 1,2
+hour=$(date '+%H'  )
+if    [ $hour -gt 5 ]
+then  if     [ $hour -lt 22 ]
+      then   sispmctl -o 3,4
+    fi
+fi
