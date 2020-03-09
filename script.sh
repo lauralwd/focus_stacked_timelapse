@@ -21,6 +21,9 @@ focusreturn=$(( -1 * focusstepsize * focusstepcount ))
 # autofocus manipulations was tested successfully on D750 D300s
 # autofocus manipulations were not successfull on D90
 
+# have a look at this https://github.com/gphoto/gphoto2/issues/161
+
+
 take_picture () {
 gphoto2 --set-config autofocus=1
 gphoto2 --set-config autofocus=1        \
