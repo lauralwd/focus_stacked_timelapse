@@ -28,7 +28,7 @@ gphoto2 --set-config whitebalance=4     \
 
 ### do checkups
 # is sispmctl present?
-if     ! $(which sispmctl)
+if     ! $(which sispmctl > /dev/null)
 then   echo '\e[31mERROR: install sispmctl to control the lights\e[0m'
 else   echo '\e[32sispmctl found \e[0m'
 fi
