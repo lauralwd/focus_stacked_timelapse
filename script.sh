@@ -111,8 +111,12 @@ then for i in $(seq 1 1 $focusstepcount)
 fi
 
 # reset focus back to original distance
-gphoto2 --capture-preview --set-config /main/actions/manualfocusdrive="$focusreturn"
-rm ./capture_preview.jpg
+if   [ $focusstepcount -gt 0 ]
+then gphoto2 --capture-preview --set-config /main/actions/manualfocusdrive="$focusreturn"
+     rm ./capture_preview.jpg
+fi
+
+# relax mirror!?
 
 ### finish up
 if    [ $focusstepcount -gt 0 ]
