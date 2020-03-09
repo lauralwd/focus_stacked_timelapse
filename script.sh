@@ -25,7 +25,6 @@ focusreturn=$(( -1 * focusstepsize * focusstepcount ))
 
 
 take_picture () {
-gphoto2 --set-config autofocus=1
 gphoto2 --set-config autofocus=1        \
         --set-config aelaflmode=0       \
         --set-config whitebalance=4     \
@@ -33,10 +32,8 @@ gphoto2 --set-config autofocus=1        \
         --set-config shutterspeed=1/10  \
         --set-config iso=4              \
         --set-config imagequality=2     \
-        --capture-image-and-download            \
+        --capture-image-and-download    \
         --filename=$prefix-d$d.\%C
-#gphoto2 --set-config autofocus=0
-#gphoto2 --set-config /main/capturesettings/focusmode2 0
 }
 
 
