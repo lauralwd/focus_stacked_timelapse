@@ -88,8 +88,9 @@ fi
 
 # automatically unmount camera filesystem?
 # Change the light from grow light to photo lights using a GEMBIRD programmable power strip
-#sispmctl -o 1,2
-#sispmctl -f 3,4
+
+sispmctl -o 1,2
+sispmctl -f 3,4
 
 
 ### take the photos!
