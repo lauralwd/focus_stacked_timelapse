@@ -13,7 +13,10 @@ focusreturn=$(( -1 * focusstepsize * focusstepcount ))
 # use gphoto2 --list-config to learn about all specific options available
 # use gphoto2 --get-config to learn more about the syntax and possibilities of a specific option
 # these may differ per camera & lens model
+
 # imagequality 2:FineJPEG  4: RAW+basicJPEG 6:RAW+FineJPEG
+# aelaflmode 0:AE/AFlock 2:AFlock 4:AFon
+# autofocus 0:on 1:off
 
 take_picture () {
 gphoto2 --set-config whitebalance=4     \
