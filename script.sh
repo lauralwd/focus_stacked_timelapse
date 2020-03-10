@@ -4,8 +4,8 @@ outdir='/home/laura/timelapse'
 prefix=$(date '+%Y%m%d-%H%M'  )
 
 #stacking settings
-focusstepsize=500
-focusstepcount=4
+focusstepsize=200
+focusstepcount=20
 focusreturn=$(( -1 * focusstepsize * focusstepcount ))
 
 
