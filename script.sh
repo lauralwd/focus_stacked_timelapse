@@ -135,8 +135,8 @@ fi
 if    [ $focusstepcount -gt 0 ]
 then  echo "\e[34mINFO: Aligning images for stacking \e[0m"
       cd "$outdir"
-      # this helps keeping the focus plane of the first picture
-      cp "$prefix"/"$prefix"-d0.jpg "$prefix"/"$prefix"-d00.jpg
+      # this helps keeping the focus plane of the first picture but may mess up the aligning process as well
+      #cp "$prefix"/"$prefix"-d0.jpg "$prefix"/"$prefix"-d00.jpg
       # align images to each other
 
       # note to self: store these in a fast temp directory to prevent unnessecary writes to a slow external harddisk
@@ -153,7 +153,7 @@ then  echo "\e[34mINFO: Aligning images for stacking \e[0m"
                   "$prefix"/"$prefix"_aligned*.tif
       # clean-up
       rm -f "$prefix"/"$prefix"_aligned*.tif
-      rm -f "$prefix"/"$prefix"-d00.jpg
+      #rm -f "$prefix"/"$prefix"-d00.jpg
       prefix_stacked=$(echo "$prefix"_stacked)
       echo "\e[32mINFO: Stacked image available at $prefix_stacked.jpg \e[0m"
 fi
