@@ -4,8 +4,8 @@ outdir='/home/laura/timelapse'
 prefix=$(date '+%Y%m%d-%H%M'  )
 
 #stacking settings
-focusstepsize=200
-focusstepcount=2
+focusstepsize=500
+focusstepcount=4
 focusreturn=$(( -1 * focusstepsize * focusstepcount ))
 
 
@@ -25,8 +25,10 @@ focusreturn=$(( -1 * focusstepsize * focusstepcount ))
 
 
 take_picture () {
-gphoto2 --set-config autofocus=1        \
+gphoto2 --set-config autofocusmode2=1        \
         --set-config aelaflmode=0       \
+        --capture-preview               \
+        --set-config /main/actions/manualfocusdrive=0 \
         --set-config whitebalance=4     \
         --set-config f-number=4         \
         --set-config shutterspeed=1/10  \
@@ -34,6 +36,7 @@ gphoto2 --set-config autofocus=1        \
         --set-config imagequality=2     \
         --capture-image-and-download    \
         --filename=$prefix-d$d.\%C
+gphoto2 --set-config viewfinder=0
 }
 
 
@@ -110,7 +113,7 @@ take_picture
 if   [ $focusstepcount -gt 0 ]
 then for i in $(seq 1 1 $focusstepcount)
      do  if   [ -f ./capture_preview.jpg ]
-         then rm ./capture_preview.jpg
+         then rm   ./capture_preview.jpg
          fi
          gphoto2 --capture-preview --set-config /main/actions/manualfocusdrive="$focusstepsize"
          d=$i
