@@ -18,11 +18,7 @@ focusreturn=$(( -1 * focusstepsize * focusstepcount ))
 # aelaflmode 0:AE/AFlock 2:AFlock 4:AFon
 # autofocus 0:on 1:off
 
-# autofocus manipulations was tested successfully on D750 D300s
-# autofocus manipulations were not successfull on D90
-
-# have a look at this https://github.com/gphoto/gphoto2/issues/161
-
+# autofocus manipulations was tested successfully on D750 D300s D90
 
 take_picture () {
 gphoto2 \
