@@ -106,6 +106,7 @@ fi
 
 # take the picture
 d=0
+echo "\e[34mINFO: taking picture nr $d \e[0m"
 take_picture
 
 # optional focus stacking in a loop
@@ -116,6 +117,7 @@ then for i in $(seq 1 1 $focusstepcount)
          fi
          gphoto2 --capture-preview --set-config /main/actions/manualfocusdrive="$focusstepsize"
          d=$i
+         echo "\e[34mINFO: taking picture nr $d \e[0m"
          take_picture
          rm ./capture_preview.jpg
      done
