@@ -25,8 +25,7 @@ focusreturn=$(( -1 * focusstepsize * focusstepcount ))
 
 
 take_picture () {
-gphoto2 --set-config autofocusmode2=1        \
-        --set-config aelaflmode=0       \
+gphoto2 \
         --capture-preview               \
         --set-config /main/actions/manualfocusdrive=0 \
         --set-config whitebalance=4     \
