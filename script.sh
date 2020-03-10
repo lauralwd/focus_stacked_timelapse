@@ -22,9 +22,10 @@ focusreturn=$(( -1 * focusstepsize * focusstepcount ))
 # autofocus manipulations were not successfull on D90
 
 take_picture () {
-gphoto2 --set-config autofocus=1
-gphoto2 --set-config autofocus=1        \
+gphoto2 --set-config autofocusmode2=1        \
         --set-config aelaflmode=0       \
+        --capture-preview               \
+        --set-config /main/actions/manualfocusdrive=0 \
         --set-config whitebalance=4     \
         --set-config f-number=4         \
         --set-config shutterspeed=1/10  \
@@ -32,8 +33,7 @@ gphoto2 --set-config autofocus=1        \
         --set-config imagequality=2     \
         --capture-image-and-download            \
         --filename=$prefix-d$d.\%C
-#gphoto2 --set-config autofocus=0
-#gphoto2 --set-config /main/capturesettings/focusmode2 0
+gphoto2 --set-config viewfinder=0
 }
 
 
